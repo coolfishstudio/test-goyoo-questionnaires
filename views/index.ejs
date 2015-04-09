@@ -13,17 +13,17 @@
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$('#box').fullpage();
-				var _submit = true;
+				var _submit = false;
 
 				$('.q_btn').on('click', function(){
 					$(this).parent().find('.q_btn').removeClass('active');
 					$(this).addClass('active');
 				});
 				$('.q_sub').on('click', function(){
-					if(!_submit){
+					if(_submit){
 						return fasle;
 					}
-					_submit = false;
+					_submit = true;
 					var info = {
 						ask_1 : $('#ask_1').find('.q_btn.active').text(),
 						ask_2 : $('#ask_2').find('.q_btn.active').text(),
@@ -48,6 +48,7 @@
 			                	toastr.success('提交成功，感谢您的作答');
 							}else{
 			                    toastr.error('提交失败');
+			                    _submit = false;
 			                }
 			            }
 			        });	
