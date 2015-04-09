@@ -28,3 +28,13 @@ exports.sumbit = function(req, res){
 exports.index = function(req, res){
     res.render('index', {});
 };
+exports.getAll = function(req, res){
+	ask.getAll({},null,function(err, list){
+		console.log(list);
+		if(err){
+            res.render('error', {});
+        }else{
+            res.render('list', {list : list});
+        }
+	});
+};

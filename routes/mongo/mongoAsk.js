@@ -8,3 +8,7 @@ exports.insert = function(obj, callback){
 	obj.updateTimestamp = new Date().getTime();
 	askColl.insert(obj, callback);
 };
+
+exports.getAll = function(info, sortStr, callback){
+	askColl.find(info).sort({'createTimestamp':-1}).toArray(callback);
+};

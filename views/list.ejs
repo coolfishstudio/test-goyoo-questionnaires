@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>问卷调查</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<style type="text/css">
+		table.altrowstable {
+			font-family: verdana,arial,sans-serif;
+			font-size:11px;
+			color:#333333;
+			border-width: 1px;
+			border-color: #a9c6c9;
+			border-collapse: collapse;
+		}
+		table.altrowstable th {
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #a9c6c9;
+		}
+		table.altrowstable td {
+			border-width: 1px;
+			padding: 8px;
+			border-style: solid;
+			border-color: #a9c6c9;
+		}
+		.oddrowcolor{
+			background-color:#d4e3e5;
+		}
+		.evenrowcolor{
+			background-color:#c3dde0;
+		}
+		</style>
+		<script type="text/javascript">
+			function altRows(id){
+				if(document.getElementsByTagName){  
+					
+					var table = document.getElementById(id);  
+					var rows = table.getElementsByTagName("tr"); 
+					 
+					for(i = 0; i < rows.length; i++){          
+						if(i % 2 == 0){
+							rows[i].className = "evenrowcolor";
+						}else{
+							rows[i].className = "oddrowcolor";
+						}      
+					}
+				}
+			}
+
+			window.onload=function(){
+				altRows('alternatecolor');
+			}
+		</script>
+	</head>
+	<body>
+		<table id="alternatecolor" class="altrowstable">
+			<% list.forEach(function(item){ %>
+			<tr>
+				<td><%= item.ask_1 %></td>
+				<td><%= item.ask_2 %></td>
+				<td><%= item.ask_3 %></td>
+				<td><%= item.ask_4 %></td>
+				<td><%= item.ask_5 %></td>
+				<td><%= item.ask_6 %></td>
+				<td><%= item.ask_7 %></td>
+				<td><%= item.ask_8 %></td>
+				<td><%= item.ask_9 %></td>
+				<td><%= item.ask_10 %></td>
+				<td><%= item.ask_11 %></td>
+				<td><%= item.ask_12 %></td>
+			</tr>
+			<% }) %>
+		</table>
+	</body>
+</html>
