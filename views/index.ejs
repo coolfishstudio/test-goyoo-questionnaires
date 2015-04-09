@@ -13,12 +13,17 @@
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$('#box').fullpage();
+				var _submit = true;
 
 				$('.q_btn').on('click', function(){
 					$(this).parent().find('.q_btn').removeClass('active');
 					$(this).addClass('active');
 				});
 				$('.q_sub').on('click', function(){
+					if(!_submit){
+						return fasle;
+					}
+					_submit = false;
 					var info = {
 						ask_1 : $('#ask_1').find('.q_btn.active').text(),
 						ask_2 : $('#ask_2').find('.q_btn.active').text(),
