@@ -1,4 +1,4 @@
-var askColl = require('./mongo').getCollection('goyoo_ask');
+var askColl = require('./mongo').getCollection('goyoo_ask_1');
 var tool = require('../util/tool');
 
 /* 创建文章 */
