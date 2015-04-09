@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>问卷调查</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<link rel='stylesheet' href='/stylesheets/jquery.fullPage.css' />
+		<link rel='stylesheet' href='/stylesheets/toastr.css' />
+		<script type="text/javascript" src="/javascripts/jquery.js"></script>
+		<script type="text/javascript" src="/javascripts/jquery.fullPage.js"></script>
+		<script type="text/javascript" src="/javascripts/toastr.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#box').fullpage();
+
+				$('.q_btn').on('click', function(){
+					$(this).parent().find('.q_btn').removeClass('active');
+					$(this).addClass('active');
+				});
+				$('.q_sub').on('click', function(){
+					var info = {
+						ask_1 : $('#ask_1').find('.q_btn.active').text(),
+						ask_2 : $('#ask_2').find('.q_btn.active').text(),
+						ask_3 : $('#ask_3').find('.q_btn.active').text(),
+						ask_4 : $('#ask_4').find('.q_btn.active').text(),
+						ask_5 : $('#ask_5').find('.q_btn.active').text(),
+						ask_6 : $('#ask_6').find('.q_btn.active').text(),
+						ask_7 : $('#ask_7').find('.q_btn.active').text(),
+						ask_8 : $('#ask_8').find('.q_btn.active').text(),
+						ask_9 : $('#ask_9').find('.q_btn.active').text(),
+						ask_10 : $('#ask_10').find('.q_btn.active').text(),
+						ask_11 : $('#ask_11').find('.q_btn.active').text(),
+						ask_12 : $('#ask_12').find('textarea').val()
+					};
+					$.ajax({
+			            type: 'POST',
+			            url: '/sumbit',
+			            data: info,
+			            success: function(result){
+			            	console.log(result);
+			                if(0 == result.status){
+			                	toastr.success('提交成功，感谢您的作答');
+							}else{
+			                    toastr.error('提交失败');
+			                }
+			            }
+			        });	
+				});
+
+			});
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<div class="section">
+				<div class="q_title">问卷调查</div>
+				<div class="q_content">您好！欢迎参加小云社区问卷调查，本次调查为了<span class="f_f90">了解大家平时上网喜欢做什么</span>，希望您能抽出2分钟时间对本次调查进行选择，谢谢您的参与。</div>
+				<div class="q_desc">本次调查不会索要您的个人信息，请放心作答。</div>
+				<div class="q_up">^</div>
+			</div>
+			<div class="section">
+				<div class="q_problem" id="ask_1">
+					<p>请选择您的性别</p>
+					<span class="q_btn">男</span>
+					<span class="q_btn">女</span>
+				</div>
+				<div class="q_up">^</div>
+			</div>
+			<div class="section">
+				<div class="q_problem" id="ask_2">
+					<p>请选择您的年龄段</p>
+					<span class="q_btn">10~20</span>
+					<span class="q_btn">20~30</span>
+					<span class="q_btn">30~40</span>
+					<span class="q_btn">40~100</span>
+				</div>
+				<div class="q_up">^</div>
+			</div>
+			<div class="section">
+				<div class="q_problem" id="ask_3">
+					<p>请选择您的职业</p>
+					<span class="q_btn">学生</span>
+					<span class="q_btn">职员</span>
+					<span class="q_btn">待业</span>
+				</div>
+				<div class="q_up">^</div>
+			</div>
+			<div class="section">
+				<div class="q_problem" id="ask_4">
+					<p>平时上网最喜欢做什么？</p>
+					<span class="q_btn">玩游戏</span>
+					<span class="q_btn">看小说</span>
+					<span class="q_btn">看新闻</span>
+					<span class="q_btn">看视频</span>
+					<span class="q_btn">听音乐</span>
+					<span class="q_btn">聊天灌水</span>
+				</div>
+				<div class="q_up">^</div>
+			</div>
+			<div class="section">
+				<div class="q_problem" id="ask_5">
+					<p>平时上网喜欢看段子吗？</p>
+					<span class="q_btn">不喜欢</span>
+					<span class="q_btn">通过app应用看</span>
+					<span class="q_btn">通过页面看</span>
+				</div>
+				<div class="q_up">^</div>
+			</div>
+			<div class="section">
+				<div class="q_problem" id="ask_6">
+					<p>平时上网喜欢看新闻吗？</p>
+					<span class="q_btn">不喜欢</span>
+					<span class="q_btn">通过app应用看</span>
+					<span class="q_btn">通过页面看</span>
+				</div>
+				<div class="q_up">^</div>
+			</div>
+			<div class="section">
+				<div class="q_problem" id="ask_7">
+					<p>平时上网喜欢看什么类型新闻？</p>
+					<span class="q_btn">不喜欢看</span>
+					<span class="q_btn">看科技</span>
+					<span class="q_btn">看娱乐</span>
+					<span class="q_btn">看其他</span>
+				</div>
+				<div class="q_up">^</div>
+			</div>
+			<div class="section">
+				<div class="q_problem" id="ask_8">
+					<p>平时上网喜欢发照片么？</p>
+					<span class="q_btn">不喜欢发</span>
+					<span class="q_btn">喜欢发自拍</span>
+					<span class="q_btn">喜欢发美照</span>
+					<span class="q_btn">喜欢发美食</span>
+				</div>
+				<div class="q_up">^</div>
+			</div>
+			<div class="section">
+				<div class="q_problem" id="ask_9">
+					<p>平时上网喜欢发帖灌水么？</p>
+					<span class="q_btn">不喜欢灌水</span>
+					<span class="q_btn">在qq里灌水</span>
+					<span class="q_btn">在微信里灌水</span>
+					<span class="q_btn">在贴吧灌水</span>
+				</div>
+				<div class="q_up">^</div>
+			</div>
+			<div class="section">
+				<div class="q_problem" id="ask_10">
+					<p>平时上网喜欢玩小游戏么？</p>
+					<span class="q_btn">不喜欢玩</span>
+					<span class="q_btn">喜欢破纪录</span>
+					<span class="q_btn">喜欢和朋友一起玩</span>
+				</div>
+				<div class="q_up">^</div>
+			</div>
+			<div class="section">
+				<div class="q_problem" id="ask_11">
+					<p>平时上网喜欢购物么？</p>
+					<span class="q_btn">不喜欢购物</span>
+					<span class="q_btn">喜欢去多家网站购物，挑便宜的</span>
+					<span class="q_btn">喜欢去一家网站购物，看心情买</span>
+				</div>
+				<div class="q_up">^</div>
+			</div>
+			<div class="section">
+				<div class="q_problem" id="ask_12">
+					<p>平时上网喜欢你还喜欢做什么？</p>
+					<textarea></textarea>
+				</div>
+				<div class="q_text">感谢您的作答。</div>
+				<span class="q_sub">提交</span>
+			</div>
+		</div>
+	</body>
+</html>
